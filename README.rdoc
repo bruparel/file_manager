@@ -1,6 +1,6 @@
 == Internet File Manager
 
-Updates 08/29/2010
+Updates 12/06/2010
 ------------------
 Please note that this is the version of file_manager that I will maintain going forward.  I will update this file
 to more accurately reflect the changes.  But briefly, it is using Devise/Simple Forms/CanCan instead of
