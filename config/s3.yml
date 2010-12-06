@@ -1,12 +1,12 @@
 development:
-  bucket: bucket bharatfilemanager
-  access_key_id: AKIAIANA2XJ56HZSAQKA
-  secret_access_key: PN0n6yolZg8kZgJH7NEi+pfT+lGiS2gHzW+DULAG
+  bucket: your bucket
+  access_key_id: your access key id
+  secret_access_key: your secret access key
 
 test:
-  bucket: bharatfilemanager
-  access_key_id: AKIAIANA2XJ56HZSAQKA
-  secret_access_key: PN0n6yolZg8kZgJH7NEi+pfT+lGiS2gHzW+DULAG
+  bucket: your bucket
+  access_key_id: your access key id
+  secret_access_key: your secret key
 
 production:
   bucket: bucket name here
