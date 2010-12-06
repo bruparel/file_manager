@@ -2,18 +2,13 @@
 
 Updates 08/29/2010
 ------------------
-So this is the latest and greatest upgrade of the Internet File manager in Rails 3 release candidate 2.
-All the tests pass and work including cucumber.  A number of deprecation warnings remain which I am too
-tired to remove at this point (some day).  You may want to download the file_manager238 app which works
-with Rails 2.3.8 to compare and use it as a basis for upgrading your apps.
+Please note that this is the version of file_manager that I will maintain going forward.  I will update this file
+to more accurately reflect the changes.  But briefly, it is using Devise/Simple Forms/CanCan instead of
+Authlogic/my own Ryan Bates inspired Labeled Form builder/my own roles management system.
+Additionally, I have refactored the application to move Admin stuff under the Admin name space for CanCan.
+I am also in the process of porting the test suite from Shoulda/WebRat/Cucumber to RSpec/Capybara/Cucumber stack.
 
-Please note that a few of the cucumber features will fail since they need amazon aws keys to operate correctly.
-Please substitute appropriate key values and they should work fine.  The shoulda tests, both units and functionals
-work fine.
-
-This is a Rails 2.3.8 application used to manage files over the web in a distributed environment.
-It has been extracted from an application that is in production, so it works in real-life.
-My motivation in releasing it is to share knowledge and put something back in the Rails community.
+Enjoy!
 
 Briefly, it lets you organize files in a hierarchy of "Clients -> Folders -> Documents."
 The folders can be nested within folders to an arbitrary depth.
