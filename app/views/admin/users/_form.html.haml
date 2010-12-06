@@ -1,0 +1,16 @@
+= simple_form_for [:admin,@user], :html => {:class => 'form'} do |f|
+  = f.error_message_on :base
+  .columns
+    .column.left
+      = f.input :email, :label => "Email Address"
+      = f.input :active, :as => :boolean
+      = f.input :password
+      = f.input :password_confirmation, :required => true, :hint => 'confirmation must match the password'
+      = f.association :role, :include_blank => false
+      - if is_admin?
+        = f.submit 'Submit', :cancel => {:action => 'index'}
+    .column.right
+      = f.simple_fields_for :profile, @user.profile do |pf|
+        = pf.input :first_name
+        = pf.input :last_name
+    .clear

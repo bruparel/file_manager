@@ -1,0 +1,20 @@
+- if @base_folders
+  %h3
+    Please select from the base folders to start and then customize
+  = form_tag populate_folders_path, :method => :put do
+    %ul{:style => "list-style-type: none"}
+      - for folder in @base_folders
+        %li
+          = check_box_tag "folder_ids[]", folder.id
+          = h folder.name
+    %p
+    = submit_tag "Select"
+- else
+  - if @folder
+    = link_to current_client.client_name, :controller => 'clients', :action => 'set_current_client', :id => current_client.id
+    &gt;
+    - for folder in @folder.ancestors.reverse
+      = link_to h(folder.name), :action => 'nest', :id => folder.id
+      &gt;
+    = @folder.name
+  = render_crud_table(@folders,'folders',['id', 'name', 'owner'],@search_fields_array, nil,'folder_actions')

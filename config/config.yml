@@ -1,0 +1,12 @@
+# config/config.yml
+development:
+  admin_email_from: "Super Boss <super_boss@example.com>"
+  admin_email_to: employee@example.com
+
+test:
+  admin_email_from: "Super Boss <super_boss@example.com>"
+  admin_email_to: employee@example.com
+
+production:
+  admin_email_from: "Super Boss<super_boss@example.com>"
+  admin_email_to: employee@example.com

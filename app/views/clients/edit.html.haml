@@ -1,0 +1,4 @@
+- title_str = (is_eclient? ?  "Enter or Edit Basic Info" : "Edit a client")
+%h3
+  = h_link_to(title_str,"../../help/client_edit")
+= render :partial => 'form'

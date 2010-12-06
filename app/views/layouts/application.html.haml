@@ -1,0 +1,71 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{"http-equiv"=>"Content-Type", :content=>"text/html;charset=utf-8"}
+    %title
+      The Internet File Manager
+    = stylesheet_link_tag 'web_app_theme', "themes/#{@current_theme}/style", 'web_app_theme_ext','ui.theme.css', 'ui.core.css', 'ui.accordion.css','jquery.cluetip.css'
+    = javascript_include_tag "jquery.js", "rails.js", "jquery-ui.js", "jquery.hoverIntent.js", "jquery.cluetip.js", "application.js"
+    = csrf_meta_tag
+  %body
+    #container
+      #header
+        %h1
+          %a{:href => "/"}  The Internet File Manager
+        %h4#current-user
+          = show_current_user
+        %h4#current-client
+          = show_current_client
+        #user-navigation
+          %ul
+            - if logged_in?
+              %li
+                = link_to 'Help', help_path
+              - if is_internal? && (current_client)
+                %li
+                  = link_to 'Reset', reset_path
+              %li
+                = link_to 'Logout', destroy_user_session_path
+            - else
+              %li
+                = link_to 'Login', new_user_session_path
+          .clear
+        #main-navigation
+          = render :partial => 'shared/main_navigation'
+          .clear
+      #wrapper
+        #main
+          .block
+            .secondary-navigation
+              = yield :secondary_nav
+              .clear
+            .content
+              - if show_title?
+                %h2.title
+                  %em
+                    = yield(:title)
+              .inner
+                .flash
+                  - flash.each do |key, value|
+                    = content_tag(:p, value, :class => "message #{key}")
+                = yield
+            .secondary-navigation
+          #footer
+            .block
+              %p
+                %span#privacy-statement
+                  = link_to "Privacy Statement", display_privacy_statement_path
+                %span
+                  Copyright &copy; 2009  The Example Group of Companies.
+        #sidebar
+          = content_for?(:sidebar) ? yield(:sidebar) : render(:partial => 'shared/sidebar')
+        .clear
+
+:javascript
+
+  $(document).ready(function() {
+    $("#accordion").accordion({ autoHeight: false, event: 'mouseover' });
+    $(".tip").cluetip( {width: 650, arrows: true} );
+  })
+
+

@@ -1,0 +1,2 @@
+module Admin::ClientStatusesHelper
+end

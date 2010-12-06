@@ -1,0 +1,22 @@
+- header_string = "Comments for " + show_current_client + " - most recent first."
+%h3
+  = h_link_to(header_string, "help/notes")
+= form_tag client_comments_path, :method => :get do
+  %p
+    = text_field_tag :search, params[:search]
+    = submit_tag "Search", :name => nil
+#accordion
+  - for comment in @comments
+    %h5
+      %a{ :href => "#" }
+        = (comment.user.display_name + " on " + comment.created_at.strftime('%A, %m/%d/%Y, at %I:%M%p') + ".  " + comment.content[0, 60]) + " ...."
+    %ul{ :style => "list-style-type: none" }
+      %li
+        = simple_format(comment.content)
+        .clear
+.actions-bar
+  .pagination
+    = will_paginate @comments
+  .clear
+- if @client
+  = render :partial => 'new_client_comment', :object => @client

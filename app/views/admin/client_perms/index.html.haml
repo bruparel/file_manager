@@ -1,0 +1,29 @@
+%h3
+  Assign client permissions for the user
+  = current_staff_user.email
+= form_tag assign_admin_client_perms_path, :method => :put do
+  %table.table
+    %tr
+      %th.first
+        ID
+      %th
+        Client Name
+      %th
+        Permit
+      %th.last
+        \&nbsp;
+    - for client in @clients
+      %tr{ :class => cycle("odd", "even") }
+        %td
+          = client.id
+        %td
+          = client.client_name
+        %td
+          = check_box_tag "client_ids[]", client.id, checked = client.permit
+        - if client.permit
+          %td
+            = link_to 'Set', :action => 'set_current_staff_user_client', :id => client.id
+            - if folder_perms_exist?(current_staff_user.id, client.id)
+              |
+              = link_to 'Delete', {:action => 'delete_perms', :id => client.id}, :confirm => 'All folder permissions for this user/client will be deleted. Are you sure?'
+  = submit_tag "Assign"

@@ -1,0 +1,5 @@
+= link_to 'Set', :controller => controller_name, :action => 'set_current_client', :id => rec.id
+|
+= link_to 'Edit', :controller => controller_name, :action => 'edit', :id => rec.id
+|
+= link_to 'Delete', {:controller => controller_name, :action => 'destroy', :id => rec.id} , :confirm => 'Are you sure?', :method => :delete

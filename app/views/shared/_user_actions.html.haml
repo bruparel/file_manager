@@ -1,0 +1,9 @@
+- if rec.role && rec.role.name == 'staff'
+  = link_to 'Set', :controller => controller_name, :action => 'set_current_staff_user', :id => rec.id
+  |
+= link_to 'Edit', :controller => controller_name, :action => 'edit', :id => rec.id
+|
+= link_to 'ChangeStatus', {:controller => controller_name, :action => 'change_status', :id => rec.id}, :confirm => 'Are you sure?'
+- if rec.confirmation_token
+  |
+  = link_to 'Confirm', {:controller => controller_name, :action => 'confirm_user', :id => rec.id}, :confirm => 'Are you sure?'

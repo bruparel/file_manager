@@ -1,0 +1,10 @@
+%h1
+  = "Document Status"
+%p
+  %strong
+    Name:
+  = @document_status.name
+= link_to 'Edit', :action => 'edit', :id => @document_status.id
+|
+= link_to 'Back', :action => 'index'
+

@@ -1,0 +1,24 @@
+= simple_form_for @client, :html => {:class => 'form'} do |f|
+  = f.error_message_on :base
+  .columns
+    .column.left
+      = f.input :client_name
+      = f.input :contact_name
+      = f.input :address1
+      = f.input :address2
+      = f.input :city
+      = f.input :state, :collection => us_state_names_and_codes
+      = f.input :zip
+      - if is_admin?
+        = f.association :client_status
+        = f.submit 'Submit', :cancel => {:action => 'index'}
+      - else
+        = f.input :client_status_id, :as => :hidden
+        = f.submit
+    .column.right
+      = f.input :phone
+      = f.input :mobile
+      = f.input :fax
+      = f.input :comment, :as => :text, :input_html => {:rows => 7, :cols => 50}
+  .clear
+

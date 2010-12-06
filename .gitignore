@@ -1,0 +1,13 @@
+*~
+*.cache
+*.pid
+db/sphinx/**
+doc/api
+doc/app
+doc/plugins
+.idea/**/*
+_.bundle
+db/*.sqlite3
+log/*.log
+tmp/**/*
+tmp/tags

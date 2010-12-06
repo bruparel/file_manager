@@ -1,0 +1,9 @@
+%h1
+  = "Editing Base Folder"
+= simple_form_for [:admin,@base_folder], :html => {:class => 'form'} do |f|
+  = f.input :name
+  = f.submit "Update"
+= link_to 'Show', [:admin,@base_folder]
+|
+= link_to 'Back', :action => 'index'
+

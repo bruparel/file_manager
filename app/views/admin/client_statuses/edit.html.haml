@@ -1,0 +1,9 @@
+%h1
+  = "Editing Client Status"
+= simple_form_for [:admin,@client_status], :html => {:class => 'form'} do |f|
+  = f.input :name
+  = f.submit "Update"
+= link_to 'Show', [:admin,@client_status]
+|
+= link_to 'Back', :action => 'index'
+

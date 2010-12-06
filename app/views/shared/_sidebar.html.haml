@@ -1,0 +1,50 @@
+.block
+  %h3
+    Contact us:
+  .content
+    - rel_path = (controller.action_name == 'index' ? '' : '../../') + 'images/john_smith.jpg'
+    %p
+      %strong
+        Contact:
+      = h_link_to("John Smith", rel_path)
+    %p
+      %strong
+        Phone:
+      (111) 222 3333
+    %p
+      %strong
+        Fax:
+      (111) 222 4444
+    %p
+      %strong
+        Mobile:
+      (111) 222 5555
+    %p
+      %strong
+        Email:
+      %a{ :href => "mailto:jsmith@example.com"}
+        jsmith@example.com
+- if logged_in?
+  - rel_path = (controller.action_name == 'index' ? '' : '../../') + 'help/themes.html'
+  .block
+    %h3
+      Switch Theme
+    %ul.navigation
+      %li
+        = h_link_to("<em>How to Switch Themes:</em>".html_safe, rel_path)
+      %li
+        = link_to "Default", :controller => "/profiles", :action => "set_theme", :id => "default"
+      %li
+        = link_to "Bec", :controller => "/profiles", :action => "set_theme", :id => "bec"
+      %li
+        = link_to "Bec-Green", :controller => "/profiles", :action => "set_theme", :id => "bec-green"
+      %li
+        = link_to "Blue", :controller => "/profiles", :action => "set_theme", :id => "blue"
+      %li
+        = link_to "Djime-Cerulean", :controller => "/profiles", :action => "set_theme", :id => "djime-cerulean"
+      %li
+        = link_to "Greenish", :controller => "/profiles", :action => "set_theme", :id => "reidb-greenish"
+      %li
+        = link_to "Kathleene", :controller => "/profiles", :action => "set_theme", :id => "kathleene"
+      %li
+        = link_to "Orange", :controller => "/profiles", :action => "set_theme", :id => "orange"

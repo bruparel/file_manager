@@ -1,0 +1,9 @@
+%h1
+  = "Editing Document Status"
+= simple_form_for [:admin,@document_status], :html => {:class => 'form'} do |f|
+  = f.input :name
+  = f.submit "Update"
+= link_to 'Show', [:admin,@document_status]
+|
+= link_to 'Back', :action => 'index'
+

@@ -1,0 +1,6 @@
+= link_to 'Download', :controller => controller_name, :action => 'download_document', :id => rec.id
+- if show_document_edit_delete_links(rec)
+  |
+  = link_to 'Upload', :controller => controller_name, :action => 'edit', :id => rec.id
+  |
+  = link_to 'Delete', {:controller => controller_name, :action => 'destroy', :id => rec.id} , :confirm => 'Are you sure?', :method => 'delete'  

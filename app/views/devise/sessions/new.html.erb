@@ -1,0 +1,12 @@
+<h2>Sign in</h2>
+
+<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.submit "Sign in" %>
+  <% if devise_mapping.rememberable? -%>
+    <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
+  <% end -%>
+<% end %>
+
+<%= render :partial => "devise/shared/links" %>

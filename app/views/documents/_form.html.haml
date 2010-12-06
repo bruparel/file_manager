@@ -1,0 +1,7 @@
+= simple_form_for @document, :html => {:class => 'form', :multipart => true} do |f|
+  = f.input :folder_id, :as => :hidden
+  = f.input :title, :size => 90
+  = f.input :doc, :as => :file, :label => '<strong>Document</strong>'
+  = f.input :description, :as => :text, :input_html => {:rows => 8, :cols => 103}
+  = f.association :document_status, :include_blank => false
+  = f.submit 'Submit', :cancel => {:action => 'index'}

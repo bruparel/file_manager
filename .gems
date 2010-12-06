@@ -1,0 +1,7 @@
+rails
+authlogic
+faker
+populator
+aws-s3
+haml
+right_aws

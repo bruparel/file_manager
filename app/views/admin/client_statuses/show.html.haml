@@ -1,0 +1,10 @@
+%h1
+  = "Client Status"
+%p
+  %strong
+    Name:
+  = @client_status.name
+= link_to 'Edit', :action => 'edit', :id => @client_status.id
+|
+= link_to 'Back', :action => 'index'
+

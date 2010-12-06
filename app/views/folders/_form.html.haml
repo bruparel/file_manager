@@ -1,0 +1,7 @@
+= simple_form_for @folder, :html => {:class => 'form'} do |f|
+  = f.input :client_id, :as => :hidden
+  = f.input :parent_id, :value => @parent_id, :as => :hidden
+  = f.input :name
+  - unless is_eclient? || is_staff?
+    = f.input :eclient_flag, :label => 'Allow Edit and Delete for External Client?', :as => :boolean
+  = f.submit 'Submit', :cancel => {:action => 'index'}

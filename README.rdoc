@@ -1,0 +1,115 @@
+== Internet File Manager
+
+Updates 08/29/2010
+------------------
+So this is the latest and greatest upgrade of the Internet File manager in Rails 3 release candidate 2.
+All the tests pass and work including cucumber.  A number of deprecation warnings remain which I am too
+tired to remove at this point (some day).  You may want to download the file_manager238 app which works
+with Rails 2.3.8 to compare and use it as a basis for upgrading your apps.
+
+Please note that a few of the cucumber features will fail since they need amazon aws keys to operate correctly.
+Please substitute appropriate key values and they should work fine.  The shoulda tests, both units and functionals
+work fine.
+
+This is a Rails 2.3.8 application used to manage files over the web in a distributed environment.
+It has been extracted from an application that is in production, so it works in real-life.
+My motivation in releasing it is to share knowledge and put something back in the Rails community.
+
+Briefly, it lets you organize files in a hierarchy of "Clients -> Folders -> Documents."
+The folders can be nested within folders to an arbitrary depth.
+It comes with four pre-defined roles for users.  Each role can have multiple users.
+
+1.  <b>admin</b> - has full access to everything in the application.
+2.  <b>leader</b> - can access everything except the administrative sections.
+3.  <b>staff</b> - can only access clients/folders for which they have been assigned permissions by the admin
+4.  <b>eclient</b> - or External Client - the aforementioned first three roles, i.e., admin, leader, and staff
+are considered internal and can access any Clients' account and folders with the caveat that staff users may have restricted permisssions.
+External client users, on the other hand, can only access their own client accounts (the admin sets up the accounts).  There can be multiple
+user accounts assigned to the same external client.
+
+== Setup
+*  Git clone the project using the URL from github.
+*  config/environment.rb has a list of gems used in the project.  If I have missed anything, let me know.
+*  There are several plugins used that can be moved to gems.  I will do that most likely for the Rails 3 upgrade.
+*  The application is setup to use MySQL and has been developed on Ubuntu, though, it has been sparsely tested in Windows.
+*  Create MySQL database: I called it file_manager_dev (pick any name and update database.yml accordingly).
+*  Run rake db:migrate from Rails root - creates the database schema
+*  Run rake db:seed from Rails root - creates seed data in reference tables
+*  Run rake db:populate from Rails root - populates the clients and folders tables with example data
+Note that the above three commands can be packaged as one rake task, e.g., setup, and I tried (see lib/tasks/application.rake), but for some reason it does not work.  May be someone with better knowledge of Rake can point out?
+*  Thinking Sphinx setup - I had diabled it for the move to Heroku.  I will reenable it but only for Rails 3.
+
+* To run the Shoulda tests - type rake test from Rails root.
+* to run the Cucumber tests - type cucumber features from Rails root.
+
+The application bootstraps the seed data,e.g., roles, minimum number of users, and a few lookup tables. 
+Feel free to customize them except the roles that are hard-wired in the application at the moment.  
+I am thinking of using Ryan Bates's cancan to centralize authorization logic, but haven't done it yet.
+
+
+== Gems and Plugins
+The application uses several useful tools that can be used as a learning example:
+
+* <b>Authlogic</b> (gem) for authenication - http://github.com/binarylogic/authlogic
+* <b>Paperclip</b> (plugin) for documents management - http://github.com/thoughtbot/paperclip
+* <b>Thinking Sphinx</b> (plugin) for full-text search - http://github.com/freelancing-god/thinking-sphinx
+* <b>Shoulda</b> (gem) for unit and functional testing - http://github.com/thoughtbot/shoulda
+* <b>Factory Girl</b> (gem) as a fixtures replacement - http://github.com/thoughtbot/factory_girl
+* <b>Webrat</b> (gem) for integration testing - http://github.com/brynary/webrat
+* <b>Cucumber</b> (gem) for BDD and testing - http://github.com/aslakhellesoy/cucumber
+* <b>Stump</b> (plugin) for mocking current_user in Authlogic (see test/test_helper.rb) - http://github.com/jm/stump
+* <b>SSL Requirement</b> (plugin) for SSL requirements - http://github.com/rails/ssl_requirement
+* <b>Rails Footnotes</b> (plugin) for development and debugging - http://github.com/josevalim/rails-footnotes
+* <b>Will Paginate</b> (plugin) for Pagination - http://github.com/mislav/will_paginate
+* <b>Acts as Tree</b> (plugin) for nesting folders - http://github.com/rails/acts_as_tree
+* <b>Navigation Helper</b> (plugin) for Navigation Tabs - http://github.com/rpheath/navigation_helper
+* <b>Custom Error Messages</b> (plugin) for customizing error messages - http://rubyforge.org/projects/custom-err-msg
+* <b>Validation Reflection</b> (plugin) for validation reflection - http://rubyforge.org/projects/valirefl
+* <b>JRails</b> for substituting jQuery for Prototype - http://github.com/aaronchi/jrails - I think it may not be needed anymore
+* <b>jQuery</b> for Javascript - http://github.com/jquery/jquery
+* <b>jQuery Accordion</b> for notes folding - http://docs.jquery.com/UI/Accordion
+* <b>jQuery Tooltips</b> for on-line help - http://plugins.learningjquery.com/cluetip
+* <b>Web App Theme</b> (plugin) for UI and theming - http://github.com/pilu/web-app-theme
+* <b>Whenever</b> (gem) for creating Cron jobs - http://github.com/javan/whenever
+* <b>Capistrano</b> (gem) for deployment tool - http://github.com/jamis/capistrano
+* <b>ModRails and Ruby Enterprise Edition</b> (gem) for deployment platform - http://www.modrails.com
+* <b>Faker</b> (gem) for creating fake user data - http://faker.rubyforge.org
+* <b>Populator</b> (gem) for populating test data - http://github.com/ryanb/populator
+
+== References
+* <b>Ryan Bates RailsCasts</b> for learning and inspiration - http://www.railscasts.com
+* <b>Ryan Bates ActiveRecord Screen Casts</b> for learning - http://www.pragprog.com/screencasts/v-rbar/everyday-active-record
+* <b>Ryan Bates Mastering Rails Forms</b> for learning - http://www.pragprog.com/screencasts/v-rbforms/mastering-rails-forms
+
+== Tools
+* <b>Vim</b> Excellent screen-casts at peepCode.
+* <b>Books</b> - too many to mention here :) http://www.amazon.com
+
+== Demo App (Please note that the demo app still uses Rails 2.3.5, so try it only for testing purposes)
+I have deployed a demo app on Heroku at the following URL:
+http://empty-fog-47.heroku.com
+login with the following userid/password combination for various roles:
+Admin Role - system/important
+Lead Role - leader/leader
+Staff Role - staff/staff
+
+See the db/seeds.rb file if you need more explanation
+
+Note for the demo app - since I did not want to deal with the SSL issues on Heroku free account, I have commented out the ssl related
+code in the following files:
+
+application_controller.rb
+user_sessions_controller.rb
+users_controller.rb
+
+
+
+== Caution!
+The application has been extensively tested in Firefox only.  Your milage will vary with other browsers, especially Internet Explorer!
+
+== License
+Released under the MIT license.  Not responsible for errors.  Use at your own risk.
+
+== Contact Info
+Bharat Ruparel
+bcruparel@yahoo.com

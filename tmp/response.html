@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
+<title>
+The Internet File Manager
+</title>
+<link href="/stylesheets/web_app_theme.css?1288562739" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/themes/default/style.css?1290727230" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/web_app_theme_ext.css?1290825331" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/ui.theme.css?1288562739" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/ui.core.css?1288562739" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/ui.accordion.css?1288562739" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/jquery.cluetip.css?1288562739" media="screen" rel="stylesheet" type="text/css" />
+<script src="/javascripts/jquery.js?1288562739" type="text/javascript"></script>
+<script src="/javascripts/rails.js?1288562739" type="text/javascript"></script>
+<script src="/javascripts/jquery-ui.js?1288562739" type="text/javascript"></script>
+<script src="/javascripts/jquery.hoverIntent.js?1288562739" type="text/javascript"></script>
+<script src="/javascripts/jquery.cluetip.js?1288562739" type="text/javascript"></script>
+<script src="/javascripts/application.js?1288562739" type="text/javascript"></script>
+
+</head>
+<body>
+<div id='container'>
+<div id='header'>
+<h1>
+<a href='/'>The Internet File Manager</a>
+</h1>
+<h4 id='current-user'>
+User: Big Boss - (Leader)
+</h4>
+<h4 id='current-client'>
+
+</h4>
+<div id='user-navigation'>
+<ul>
+<li>
+<a href="/help">Help</a>
+</li>
+<li>
+<a href="/users/sign_out">Logout</a>
+</li>
+</ul>
+<div class='clear'></div>
+</div>
+<div id='main-navigation'>
+<ul class="navigation"><li class="active"><a href="/clients">Clients</a></li>
+<li class=""><a href="/folders">Folders</a></li>
+<li class=""><a href="/documents">Documents</a></li></ul>
+
+<div class='clear'></div>
+</div>
+</div>
+<div id='wrapper'>
+<div id='main'>
+<div class='block'>
+<div class='secondary-navigation'>
+
+<div class='clear'></div>
+</div>
+<div class='content'>
+<div class='inner'>
+<div class='flash'>
+</div>
+<h3>
+<a href="/clients" class="tip" rel="help/clients" title="Clients">Clients</a>
+</h3>
+<form accept-charset="UTF-8" action="/clients" class="form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+<input checked="checked" id="which_action_Search" name="which_action" type="radio" value="Search" />
+<a href="/clients" class="tip" rel="help/search.html" title="Search:">Search:</a>
+<select id="search_by" name="search_by"><option value="Client name">Client name</option>
+<option value="Contact name">Contact name</option>
+<option value="City">City</option></select>
+<input id="search" name="search" type="text" />
+<input id="which_action_Filter" name="which_action" type="radio" value="Filter" />
+<a href="/clients" class="tip" rel="help/filter.html" title="Filter:">Filter:</a>
+<select id="filter_by" name="filter_by"></select>
+<input type="submit" value="Submit" />
+<div class='clear'></div>
+</form>
+
+<table class='table'>
+<tr>
+<th class='first'>
+Id
+</th>
+<th>
+Client name
+</th>
+<th>
+Contact name
+</th>
+<th>
+City
+</th>
+<th class='last'>
+&nbsp;
+</th>
+</tr>
+</table>
+<div class='actions-bar'>
+<div class='actions'>
+<a href="/clients/new">New</a>
+</div>
+<div class='pagination'>
+
+</div>
+<div class='clear'></div>
+</div>
+
+
+</div>
+</div>
+<div class='secondary-navigation'></div>
+</div>
+<div id='footer'>
+<div class='block'>
+<p>
+<span id='privacy-statement'>
+<a href="/display_privacy_statement">Privacy Statement</a>
+</span>
+<span>
+Copyright &copy; 2009  The Example Group of Companies.
+</span>
+</p>
+</div>
+</div>
+</div>
+<div id='sidebar'>
+<div class='block'>
+<h3>
+Contact us:
+</h3>
+<div class='content'>
+<p>
+<strong>
+Contact:
+</strong>
+<a href="/clients" class="tip" rel="images/john_smith.jpg" title="John Smith">John Smith</a>
+</p>
+<p>
+<strong>
+Phone:
+</strong>
+(111) 222 3333
+</p>
+<p>
+<strong>
+Fax:
+</strong>
+(111) 222 4444
+</p>
+<p>
+<strong>
+Mobile:
+</strong>
+(111) 222 5555
+</p>
+<p>
+<strong>
+Email:
+</strong>
+<a href='mailto:jsmith@example.com'>
+jsmith@example.com
+</a>
+</p>
+</div>
+</div>
+<div class='block'>
+<h3>
+Switch Theme
+</h3>
+<ul class='navigation'>
+<li>
+<a href="/clients" class="tip" rel="help/themes.html" title="<em>How to Switch Themes:</em>"><em>How to Switch Themes:</em></a>
+</li>
+<li>
+<a href="/set_theme?id=default">Default</a>
+</li>
+<li>
+<a href="/set_theme?id=bec">Bec</a>
+</li>
+<li>
+<a href="/set_theme?id=bec-green">Bec-Green</a>
+</li>
+<li>
+<a href="/set_theme?id=blue">Blue</a>
+</li>
+<li>
+<a href="/set_theme?id=djime-cerulean">Djime-Cerulean</a>
+</li>
+<li>
+<a href="/set_theme?id=reidb-greenish">Greenish</a>
+</li>
+<li>
+<a href="/set_theme?id=kathleene">Kathleene</a>
+</li>
+<li>
+<a href="/set_theme?id=orange">Orange</a>
+</li>
+</ul>
+</div>
+
+</div>
+<div class='clear'></div>
+</div>
+</div>
+</body>
+</html>
+<script type='text/javascript'>
+  //<![CDATA[
+    $(document).ready(function() {
+      $("#accordion").accordion({ autoHeight: false, event: 'mouseover' });
+      $(".tip").cluetip( {width: 650, arrows: true} );
+    })
+  //]]>
+</script>

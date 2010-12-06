@@ -1,0 +1,10 @@
+%h1
+  = "Base Folder"
+%p
+  %strong
+    Name:
+  = @base_folder.name
+= link_to 'Edit', :action => 'edit', :id => @base_folder.id
+|
+= link_to 'Back', :action => 'index'
+

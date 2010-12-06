@@ -1,0 +1,27 @@
+- help_screen = ((is_internal?) ? 'notes_to_user' : 'notes_to_admin')
+%h3
+  = h_link_to('Add a Note or Comment',"help/#{help_screen}")
+= form_for ClientComment.new(:client => new_client_comment) do |f|
+  = f.hidden_field :client_id, :value => current_client.id
+  = f.hidden_field :user_id, :value => current_user.id
+  %p
+    = f.label :content, "Notes or Comments:"
+    %br
+    = f.text_area :content, :rows => 8, :cols => 80
+  %p
+    = check_box_tag :send_email
+    = label_tag :send_email, "Send Email?"
+  %p
+    = label_tag :subject, "Subject:"
+    %br
+    = text_field_tag :subject, '', :size => 80, :disabled => true
+  %p
+    = f.submit "Submit"
+
+:javascript
+
+  $(function() {
+    $('#send_email').click(function() {
+      $('#subject').toggleOpposite(!this.checked)
+    });
+  });

@@ -1,0 +1,23 @@
+<h2>Sign up</h2>
+
+<% @user.build_profile %>
+
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation, :required => true, :hint => 'confirmation must match the password' %>
+
+  <%= f.simple_fields_for :profile, @user.profile do |pf| %>  
+
+    <%= pf.input :first_name %>
+    <%= pf.input :last_name %>
+
+  <% end %>
+
+  <p><%= f.submit "Sign up" %></p>
+<% end %>
+
+<%= render :partial => "devise/shared/links" %>
+

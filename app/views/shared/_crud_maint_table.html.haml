@@ -1,0 +1,40 @@
+%h3
+  = h_link_to(controller_name.humanize, "help/#{controller_name}")
+- unless search_fields_array.blank?
+  - a = search_fields_array.collect {|e| e.humanize}
+  = form_tag({:controller => controller_name, :action => 'index'}, {:method => :get, :class => 'form'}) do
+    = radio_button_tag(:which_action, "Search", search_checked?(params[:which_action]))
+    = h_link_to('Search:', "help/search.html")
+    = select_tag :search_by, options_for_select(a, params[:search_by])
+    = text_field_tag :search, params[:search]
+    - if status_array
+      = radio_button_tag(:which_action, "Filter", filter_checked?(params[:which_action]))
+      = h_link_to('Filter:',"help/filter.html")
+      = select_tag :filter_by, options_for_select(status_array, get_filter_by_value(status_array, params[:filter_by]))
+    = submit_tag "Submit", :name => nil
+    .clear
+%table.table
+  %tr
+    - columns.each_with_index do |col, i|
+      %th{ :class => (i == 0 ? 'first' : nil) }
+        = col.humanize
+    %th.last
+      \&nbsp;
+  - model_data.each do |a_rec|
+    %tr{ :class => cycle("odd","even") }
+      - columns.each_with_index do |col, i|
+        %td{ :class => (i == 0 ? 'first' : nil) }
+          = a_rec.attributes["#{col}"]
+      %td
+        - if logged_in? && (actions == 'default')
+          = link_to 'Edit', :controller => controller_name, :action => 'edit', :id => a_rec.id
+          |
+          = link_to 'Delete', {:controller => controller_name, :action => 'destroy', :id => a_rec.id} , :confirm => 'Are you sure?', :method => 'delete'
+        - elsif logged_in?
+          = render :partial => "shared/#{actions}", :locals => {:controller_name => controller_name, :rec => a_rec}
+.actions-bar
+  .actions
+    = link_to 'New', :controller => controller_name, :action => 'new'
+  .pagination
+    = will_paginate model_data
+  .clear

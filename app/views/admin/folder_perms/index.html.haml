@@ -1,0 +1,31 @@
+%h3
+  Assign folder permissions for the user
+  = current_staff_user.email
+  for client
+  = current_staff_user_client.client_name
+= form_tag assign_admin_folder_perms_path, :method => :put do
+  %table.table
+    %tr
+      %th.first
+        Parent ID
+      %th
+        ID
+      %th
+        Folder Name
+      %th
+        Permit
+      %th.last
+        &nbsp;
+      - for folder in @folders
+        - this_class = cycle("odd", "even")
+        %tr{ :class => "#{this_class}" }
+          %td
+            = folder.parent_id
+          %td
+            = folder.id
+          %td
+            = folder.name
+          %td
+            = check_box_tag "folder_ids[]", folder.id, checked = folder.permit
+  = submit_tag "Assign"
+
