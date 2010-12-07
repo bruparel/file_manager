@@ -29,8 +29,8 @@ class Document < ActiveRecord::Base
 
   validates_attachment_presence :doc
   # validates_attachment_size :doc, :less_than => 200.kilobytes
-  validates_presence_of :title
-  validates_uniqueness_of :title, :scope => :folder_id
+  validates :title, :presence => true, :uniqueness => {:scope => :folder_id}
+  validates :folder_id, :presence => true
 
   def status
     self.document_status.name
