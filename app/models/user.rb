@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile
   belongs_to                    :role
 
-  validates :email, :presence => true, :uniqueness => true
+  # validates :email, :presence => true, :uniqueness => true
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :lockable and :timeoutable
