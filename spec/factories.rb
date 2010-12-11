@@ -106,7 +106,7 @@ end
 # This will guess the ClientPerm class
 Factory.define :client_perm do |pp|
   pp.association :client
-  pp.association :user, :factory => :lead_user
+  pp.association :user, :factory => :staff_user
 end
 
 Factory.define :base_folder do |f|
@@ -122,7 +122,7 @@ end
 
 # This will guess the FolderPerm class
 Factory.define :folder_perm do |fp|
-  fp.association :user, :factory => :lead_user
+  fp.association :user, :factory => :staff_user
   #fp.association :client
   fp.association :folder
 end

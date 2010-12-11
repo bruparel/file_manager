@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   has_one                       :profile
   accepts_nested_attributes_for :profile
   belongs_to                    :role
+  has_many                      :client_perms
 
   # validates :email, :presence => true, :uniqueness => true
   

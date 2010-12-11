@@ -11,7 +11,7 @@ describe User do
       user  = Factory.build(:admin_user)
       @user = @role.users.create(user)
     end
-    it "should hava a role attribute" do
+    it "should have a role attribute" do
       @user.should respond_to(:role)
     end
     it "should have the right role value" do
