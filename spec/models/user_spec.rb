@@ -7,21 +7,18 @@ describe User do
   # This leaves the associations :role and :profile to be tested
   describe "Role association" do
     before(:each) do
-      @role = Factory.create(:admin_role)
-      user  = Factory.build(:admin_user)
-      @user = @role.users.create(user)
+      @user  = Factory.create(:admin_user)
     end
     it "should have a role attribute" do
       @user.should respond_to(:role)
     end
     it "should have the right role value" do
-      @user.role.should == @role
+      @user.role.name.should == 'admin'
     end
   end
   describe "Profile association" do
     before(:each) do
       @user = Factory.create(:admin_user)
-      # @profile = Factory.create(:admin_profile, :user => @user)
     end
     it "should have a profile attribute" do
       @user.should respond_to(:profile)

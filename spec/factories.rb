@@ -1,22 +1,22 @@
 Factory.define :admin_role, :class => :role do |r|
-  r.sequence(:name) { |n| "admin#{n}" }
-  r.sequence(:display_name) { |n| "Administrator#{n}" }
+  r.name {"admin"}
+  r.display_name {"Administrator"}
 end
 
 Factory.define :leader_role, :class => :role do |r|
-  r.sequence(:name) { |n| "leader#{n}" }
-  r.sequence(:display_name) { |n| "Leader#{n}" }
+  r.name {"leader"}
+  r.display_name {"Leader"}
 end
 
 Factory.define :staff_role, :class => :role do |r|
-  r.sequence(:name) { |n| "staff#{n}" }
-  r.sequence(:display_name) { |n| "Staff#{n}" }
+  r.name {"staff"}
+  r.display_name {"Staff"}
 end
 
 #This creates an external client instance
 Factory.define :eclient_role, :class => :role do |r|
-  r.sequence(:name) { |n| "eclient#{n}" }
-  r.sequence(:display_name) { |n| "External Client#{n}" }
+  r.name {"eclient"}
+  r.display_name {"External Client"}
 end
 
 Factory.define :admin_profile, :class => :profile do |p|
