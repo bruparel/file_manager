@@ -115,4 +115,34 @@ describe Admin::UsersController do
     end
   end
 
+  describe "GET 'set_current_staff_user'" do
+    it "should be successful" do
+      @user = Factory.create(:lead_user)
+      get 'set_current_staff_user', :id => @user.id
+      session[:staff_user_id].should == @user.id
+      flash[:notice].should =~ /Current staff user set to/i
+      response.should redirect_to(:controller => 'client_perms', :action => 'index')
+    end
+  end
+
+  describe "GET 'change_status'" do
+    it "should be successful" do
+      @user = Factory.create(:lead_user)
+      get 'change_status', :id => @user.id
+      assigns(:user).should_not be_nil
+      flash[:warning] =~ /in-active/i
+      response.should redirect_to(admin_users_path)
+    end
+  end
+
+  describe "GET 'confirm_user'" do
+    it "should be successful" do
+      @user = Factory.create(:lead_user)
+      get 'confirm_user', :id => @user.id
+      assigns(:user).should_not be_nil
+      flash[:warning] =~ /Confirming user/i
+      response.should redirect_to(admin_users_path)
+    end
+  end
+
 end
