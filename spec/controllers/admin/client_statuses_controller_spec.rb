@@ -100,7 +100,7 @@ describe Admin::ClientStatusesController do
       it "should not create a client status" do
         lambda do
           post :create, :client_status => @attr
-        end.should_not change(BaseFolder, :count)
+        end.should_not change(ClientStatus, :count)
       end
     end
     describe "success" do

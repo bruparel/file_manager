@@ -19,7 +19,7 @@ class Admin::UsersController < Admin::BaseController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to users_path, :notice => "User account created and is ready for use."
+      redirect_to admin_users_path, :notice => "User account created and is ready for use."
     else
       render :action => 'new'
     end
@@ -41,7 +41,7 @@ class Admin::UsersController < Admin::BaseController
       if is_internal?
         redirect_to :action => "index"
       else
-        redirect_to edit_user_path(@user)
+        redirect_to admin_edit_user_path(@user)
       end
     else
       render :action => "edit"
@@ -59,7 +59,7 @@ class Admin::UsersController < Admin::BaseController
     @user = User.find(params[:id])
     @user.update_attribute(:active, (@user.active ? false : true))
     flash[:warning] = "Set user status to " + (@user.active ? "active" : "in-active") + " for " + @user.email
-    redirect_to users_path
+    redirect_to admin_users_path
   end
 
   def confirm_user
@@ -70,6 +70,6 @@ class Admin::UsersController < Admin::BaseController
     else
       flash[:warning] = "User is not active currently.  You should activate him first!"
     end
-    redirect_to users_path
+    redirect_to admin_users_path
   end
 end
