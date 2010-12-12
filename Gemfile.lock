@@ -164,6 +164,10 @@ GEM
     validation_reflection (0.3.8)
     warden (0.10.7)
       rack (>= 1.0.0)
+    webrat (0.7.1)
+      nokogiri (>= 1.2.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5.3)
     will_paginate (3.0.pre2)
     xml-simple (1.0.12)
     xpath (0.1.2)
@@ -199,4 +203,5 @@ DEPENDENCIES
   sqlite3-ruby (= 1.2.5)
   string_to_editor
   validation_reflection
+  webrat
   will_paginate (>= 3.0.pre2)

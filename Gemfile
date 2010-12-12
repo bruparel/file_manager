@@ -30,6 +30,7 @@ group :test do
   gem "shoulda"
   gem "factory_girl_rails", "1.0"
   gem "rspec", "2.1.0"
+  gem "webrat"
 end
 
 group :cucumber do
